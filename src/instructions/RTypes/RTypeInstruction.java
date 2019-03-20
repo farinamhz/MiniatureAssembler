@@ -12,10 +12,19 @@ import instructions.Instruction;
  * @author Moses
  */
 public class RTypeInstruction extends Instruction{
-    protected int rd;
-    protected int rs;
-    protected int rt;
+    private int rd;
+    private int rs;
+    private int rt;
+    private int opcode;
 
+    public int getOpcode() {
+        return opcode;
+    }
+
+    public void setOpcode(int opcode) {
+        this.opcode = opcode;
+    }
+    
     public int getRd() {
         return rd;
     }
