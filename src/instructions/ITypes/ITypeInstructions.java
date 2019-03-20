@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package operations.ITypes;
+package instructions.ITypes;
 
-import operations.Operation;
+import instructions.Instruction;
 
 /**
  *
  * @author Moses
  */
-public class ITypeOperation extends Operation{
+public class ITypeInstructions extends Instruction{
     
 }

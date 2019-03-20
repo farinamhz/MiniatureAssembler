@@ -3,14 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package operations.RTypes;
+package instructions.JTypes;
 
-import operations.Operation;
+import instructions.Instruction;
 
 /**
  *
  * @author Moses
  */
-public class RTypeOperation extends Operation{
+public class JTypeInstruction extends Instruction{
     
 }

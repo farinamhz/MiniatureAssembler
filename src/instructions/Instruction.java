@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package operations;
+package instructions;
 
 /**
  *
  * @author Moses
  */
-public class Operation {
-    
+public class Instruction {
+    public static final int OPCODE=-1;
 }
