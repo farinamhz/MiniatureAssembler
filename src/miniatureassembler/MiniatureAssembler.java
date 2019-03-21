@@ -5,7 +5,12 @@
  */
 package miniatureassembler;
 
+import assembler.CodeFileReader;
+import assembler.CodeScanner;
+import assembler.Translator;
 import instructions.Instruction;
+import java.util.LinkedList;
+import sun.net.www.URLConnection;
 
 /**
  *
@@ -18,6 +23,16 @@ public class MiniatureAssembler {
      */
     public static void main(String[] args) {
         
+        
+        CodeFileReader fileReader=new CodeFileReader("program.as");
+        CodeScanner codeScanner=new CodeScanner(fileReader.read());
+        Translator translator=new Translator(codeScanner.scan());
+        LinkedList<Integer> translated=translator.translate();
+        for(Integer trans:translated)
+        {
+            System.out.println(trans);
+        }
+                
     }
     
 }

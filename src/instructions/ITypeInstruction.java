@@ -11,7 +11,7 @@ import instructions.Instruction;
  *
  * @author Moses
  */
-public class ITypeInstructions extends Instruction{
+public class ITypeInstruction extends Instruction{
     private int rs;
     private int rt;
     private int offset;
