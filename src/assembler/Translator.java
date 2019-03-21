@@ -16,7 +16,7 @@ import java.util.LinkedList;
  * they can be either {@link instructions.Instruction} or {@link instructions.Directive}.
  * @author farinam
  */
-public class Translator {
+public class Translator { 
     private LinkedList<Object> lines;
     private LinkedList<Integer> translated;
     

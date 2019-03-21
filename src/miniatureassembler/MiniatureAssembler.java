@@ -23,7 +23,7 @@ public class MiniatureAssembler {
      */
     public static void main(String[] args) {
         
-        
+         
         CodeFileReader fileReader=new CodeFileReader("program.as");
         CodeScanner codeScanner=new CodeScanner(fileReader.read());
         Translator translator=new Translator(codeScanner.scan());
