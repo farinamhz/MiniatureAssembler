@@ -10,16 +10,9 @@ package instructions;
  * @author Moses
  */
 public class Instruction {
-    protected InstructionType instructionType;
+    
     protected int opcode;
 
-    public InstructionType getInstructionType() {
-        return instructionType;
-    }
-
-    public void setInstructionType(InstructionType instructionType) {
-        this.instructionType = instructionType;
-    }
 
     public int getOpcode() {
         return opcode;
