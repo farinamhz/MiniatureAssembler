@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package instructions.ITypes;
+package instructions;
 
 import instructions.Instruction;
 
@@ -11,6 +11,6 @@ import instructions.Instruction;
  *
  * @author Moses
  */
-public class ITypeInstructions extends Instruction{
+public class JTypeInstruction extends Instruction{
     
 }

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package instructions.RTypes;
+package instructions;
 
 import instructions.Instruction;
 
@@ -15,15 +15,7 @@ public class RTypeInstruction extends Instruction{
     private int rd;
     private int rs;
     private int rt;
-    private int opcode;
-
-    public int getOpcode() {
-        return opcode;
-    }
-
-    public void setOpcode(int opcode) {
-        this.opcode = opcode;
-    }
+    
     
     public int getRd() {
         return rd;

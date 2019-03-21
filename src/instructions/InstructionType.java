@@ -3,14 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package instructions.JTypes;
-
-import instructions.Instruction;
+package instructions;
 
 /**
  *
  * @author Moses
  */
-public class JTypeInstruction extends Instruction{
-    
+public enum InstructionType {
+    RType,IType,JType;
 }
