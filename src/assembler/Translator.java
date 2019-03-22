@@ -9,6 +9,7 @@ import instructions.Directive;
 import instructions.ITypeInstruction;
 import instructions.JTypeInstruction;
 import instructions.RTypeInstruction;
+import java.math.BigInteger;
 import java.util.LinkedList;
 
 /**
@@ -52,23 +53,44 @@ public class Translator {
         
         return this.translated;
     }
-
+    /*
+    private int ConvertDecimalToBinary(int decimal){
+    int n,binary=0, i,j=1;
+    for(i=0; decimal>0; i++){ 
+        binary+=(decimal%2)*j;
+        j*=10;
+        decimal/=2;  
+    } 
+        return binary;
+    }
+    private int ConvertBinaryToDecimal(String binary){
+        BigInteger decimal = new BigInteger(binary, 2);
+        return decimal.intValue();
+    } */
     //todo farinam
     private int translateRType(RTypeInstruction instruction)
     {
-        return 0;
+        int machinecode;
+        machinecode= (instruction.getRd()<<12)+instruction.getRt()<<16
+                +(instruction.getRs()<<20)+(instruction.getOpcode()<<24);
+        return machinecode;
     }
     
     //todo farinam
     private int translateJType(JTypeInstruction instruction)
     {
-        return 0;
+        int machinecode;
+        machinecode= (instruction.getTargetAddress())+(instruction.getOpcode()<<24);
+        return machinecode;
     }
     
     //todo farinam
     private int translateIType(ITypeInstruction instruction)
     {
-        return 0;
+        int machinecode;
+         machinecode= (instruction.getOffset())+(instruction.getRt()<<16)
+                +(instruction.getRs()<<20)+(instruction.getOpcode()<<24);
+        return machinecode;
     }
     
     //todo farinam
