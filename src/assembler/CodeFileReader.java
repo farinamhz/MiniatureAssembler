@@ -5,6 +5,12 @@
  */
 package assembler;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Moses
@@ -16,8 +22,31 @@ public class CodeFileReader {
         this.filePath = filePath;
     }
     
-    public String[] read()
+    public List<String> read() throws  IOException
     {
-        return null;
+        FileInputStream fin=new FileInputStream(filePath);
+        int i=0;
+        List<String> lines=new ArrayList<>();
+        StringBuilder line=new StringBuilder();
+        while((i=fin.read())!=-1)
+        {
+            if(i=='\n' || i=='\r')
+            {
+                if(line.toString().trim().length()!=0)
+                {
+                   lines.add(line.toString());
+                    line.setLength(0); 
+                }
+                
+            }else
+            {
+                line.append((char)i);
+            }
+        }
+        
+        if(line.toString().trim().length()!=0)
+            lines.add(line.toString());
+        
+        return lines;
     }
 }

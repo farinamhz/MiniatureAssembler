@@ -8,6 +8,7 @@ package assembler;
 import instructions.InstructionType;
 import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.List;
 import parameters.InstructionData;
 import parameters.InstructionParameters;
 
@@ -19,10 +20,10 @@ public class CodeScanner {
     private LinkedList<Object> lines=new LinkedList<>();
     private HashMap<String,Integer> symbolTable=new HashMap<>();
     private final HashMap<String,InstructionData> datas;
-    private final String[] codeLines;
+    private final List<String> codeLines;
     
     
-    public CodeScanner(String[] codeLines)
+    public CodeScanner(List<String> codeLines)
     {
         this.codeLines=codeLines;
         this.datas=new InstructionParameters().getDatas();
