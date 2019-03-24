@@ -47,7 +47,8 @@ public class Translator {
                 this.translated.add(translateIType((ITypeInstruction)line));
             }else if(line instanceof Directive)
             {
-                this.translated.add(translateDirective((Directive)line));
+             //   this.translated.add(translateDirective((Directive)line));
+                translateDirective((Directive)line);
             }
         }
         
@@ -94,8 +95,18 @@ public class Translator {
     }
     
     //todo farinam
-    private int translateDirective(Directive directive)
+    private void translateDirective(Directive directive)
     {
-        return 0;
+       switch (directive.getDirectiveType()){
+       
+           case FILL:
+               this.translated.add(directive.getValue());
+               
+           case SPACE:
+               for (int i=0 ; i<directive.getValue() ; i++){
+                    this.translated.add(0);
+               }
+       }
+    
     }
 }
