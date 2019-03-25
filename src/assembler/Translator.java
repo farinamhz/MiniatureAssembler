@@ -101,11 +101,13 @@ public class Translator {
        
            case FILL:
                this.translated.add(directive.getValue());
+               break;
                
            case SPACE:
                for (int i=0 ; i<directive.getValue() ; i++){
                     this.translated.add(0);
                }
+               break;
        }
     
     }

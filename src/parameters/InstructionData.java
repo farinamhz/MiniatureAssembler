@@ -11,6 +11,7 @@ import instructions.InstructionType;
  *
  * @author Moses
  */
+
 public class InstructionData {
     private final InstructionType instructionType;
     private final int opcode;

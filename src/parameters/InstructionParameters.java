@@ -5,6 +5,7 @@
  */
 package parameters;
 
+import instructions.DirectiveType;
 import instructions.InstructionType;
 import java.util.HashMap;
 
@@ -14,6 +15,7 @@ import java.util.HashMap;
  */
 public class InstructionParameters {
     private final HashMap<String,InstructionData> datas;
+    private final HashMap<String,DirectiveType> directives;
     
     /**
      * will initialize {@link #datas} which includes data of the instructions
@@ -42,11 +44,21 @@ public class InstructionParameters {
         //Itypes
         this.datas.put("j", new InstructionData(InstructionType.JType, 13));
         this.datas.put("halt", new InstructionData(InstructionType.JType, 14));
+        
+        
+        this.directives=new HashMap<>();
+        this.directives.put(".fill", DirectiveType.FILL);
+        this.directives.put(".space", DirectiveType.SPACE);
     }
 
     public HashMap<String,InstructionData> getDatas() {
         return datas;
     }
+
+    public HashMap<String, DirectiveType> getDirectives() {
+        return directives;
+    }
+    
     
     
 }

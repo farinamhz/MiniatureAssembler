@@ -12,7 +12,17 @@ package instructions;
 public class Directive {
     private DirectiveType directiveType;
     private int value;
+    private String valueLabel;
 
+    public String getValueLabel() {
+        return valueLabel;
+    }
+
+    public void setValueLabel(String valueLabel) {
+        this.valueLabel = valueLabel;
+    }
+    
+    
     public DirectiveType getDirectiveType() {
         return directiveType;
     }
