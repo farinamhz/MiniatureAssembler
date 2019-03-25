@@ -72,7 +72,7 @@ public class Translator {
     private int translateRType(RTypeInstruction instruction)
     {
         int machinecode;
-        machinecode= (instruction.getRd()<<12)+instruction.getRt()<<16
+        machinecode= (instruction.getRd()<<12)+(instruction.getRt()<<16)
                 +(instruction.getRs()<<20)+(instruction.getOpcode()<<24);
         return machinecode;
     }
