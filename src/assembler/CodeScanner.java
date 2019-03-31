@@ -9,6 +9,7 @@ import exceptions.InvalidCodeException;
 import instructions.Directive;
 import instructions.DirectiveType;
 import instructions.ITypeInstruction;
+import instructions.Instruction;
 import instructions.InstructionType;
 import instructions.JTypeInstruction;
 import instructions.RTypeInstruction;
@@ -225,16 +226,35 @@ public class CodeScanner {
      * @param data instruction data already fetched from {@link #datas}
      * @return 
      */
-    private JTypeInstruction scanJtypeInstruction(String line,InstructionData data)
+    private JTypeInstruction scanJtypeInstruction(String line,InstructionData data) throws InvalidCodeException
     {
         JTypeInstruction instruction=new JTypeInstruction();
         instruction.setOpcode(data.getOpcode());
         
         String inputs=getInputs(line);
         
-        instruction.setTargetAddressLabel(inputs);
+        setImmediate(instruction, inputs);
         
         return instruction;
+    }
+    
+    /**
+     * based on the input, it determines that the immediate value is a label or an address, then puts it in the instruction
+     * @param instruction instruction to be set
+     * @param input immediate value
+     * @throws InvalidCodeException 
+     */
+    private void setImmediate(JTypeInstruction instruction,String input) throws InvalidCodeException
+    {
+        try {
+            int imm=Integer.parseInt(input);
+            if(imm<-32768 || imm>32768)//check if it's 16 bit
+                throw new InvalidCodeException(imm+" immidiate value is not 16 bit");
+            instruction.setTargetAddress(imm);
+        } catch (NumberFormatException e) {
+            instruction.setTargetAddressLabel(input);
+        }
+        
     }
     
     /**
@@ -251,24 +271,39 @@ public class CodeScanner {
         String inputs=getInputs(line)+",";
         String input[]=inputs.split(",");
         
-        if(input.length!=3)
-            throw new InvalidCodeException("Invalid Code");
-        
         instruction.setRt(Integer.parseInt(input[0]));
+        
+        if(input.length==2)//instruction is lui or jalr so it has only 2 inputs
+        {
+            setImmediate(instruction, input[1]);
+            return instruction;
+        }
+        
         instruction.setRs(Integer.parseInt(input[1]));
         
-        try {
-            int imm=Integer.parseInt(input[2]);
-            if(imm<-32768 || imm>32768)//check if it's 16 bit
-                throw new InvalidCodeException(imm+" immidiate value is not 16 bit");
-            instruction.setOffset(imm);
-        } catch (NumberFormatException e) {
-            instruction.setOffsetLabel(input[2]);
-        }
+        setImmediate(instruction, input[2]);
         
         return instruction;
     }
     
+    /**
+     * based on the input, it determines that the immediate value is a label or an address, then puts it in the instruction
+     * @param instruction instruction to be set
+     * @param input immediate value
+     * @throws InvalidCodeException 
+     */
+    private void setImmediate(ITypeInstruction instruction,String input) throws InvalidCodeException
+    {
+        try {
+            int imm=Integer.parseInt(input);
+            if(imm<-32768 || imm>32768)//check if it's 16 bit
+                throw new InvalidCodeException(imm+" immidiate value is not 16 bit");
+            instruction.setOffset(imm);
+        } catch (NumberFormatException e) {
+            instruction.setOffsetLabel(input);
+        }
+        
+    }
     /**
      * scans a line and turns it do a directive
      * @param line code line starting by inputs of instruction

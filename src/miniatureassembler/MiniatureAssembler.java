@@ -11,7 +11,9 @@ import assembler.Translator;
 import exceptions.InvalidCodeException;
 import instructions.Instruction;
 import instructions.RTypeInstruction;
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.LinkedList;
 import sun.net.www.URLConnection;
 
@@ -25,8 +27,26 @@ private static LinkedList<Integer> SAMPLE_RESULT;
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws IOException, InvalidCodeException
+    public static void main(String[] args) throws IOException, InvalidCodeException, InterruptedException
     {
+//        String pythonFile=System.getProperty("user.dir").toString()+"\\main.py";
+//        ProcessBuilder pb=new ProcessBuilder("python",pythonFile);
+//        
+//        Process p=pb.start();
+//        p.getOutputStream().write(SAMPLE.getBytes());
+//        Thread.sleep(4000);
+//        p.destroy();
+//
+//        BufferedReader buffread=new BufferedReader(new InputStreamReader(p.getInputStream()));
+//        String output="";
+//        int i=0;
+//        while((i=buffread.read())!=-1)
+//        {
+//            output+=(char)i;
+//        }
+//        
+//        System.out.println(output);
+        
         SAMPLE_RESULT=new LinkedList<>();
         SAMPLE_RESULT.add(151060486);
         SAMPLE_RESULT.add(152174594);
