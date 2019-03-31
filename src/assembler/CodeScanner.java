@@ -55,7 +55,8 @@ public class CodeScanner {
                 continue;
             int whitespace=getFirstWhiteSpace(line);
             String first=line.substring(0,whitespace );//get the first word 
-            line=line.substring(whitespace+1);
+            line=line.substring(whitespace);
+            line=line.trim();
             if(findout(line, first))
             {
                 index++;
