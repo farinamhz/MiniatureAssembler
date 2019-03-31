@@ -74,7 +74,8 @@ public class CodeScanner {
             //must proceed to get the next word 
             whitespace=getFirstWhiteSpace(line);
             String second=line.substring(0, whitespace);
-            line=line.substring(whitespace+1);
+            line=line.substring(whitespace);
+            line=line.trim();
             //second word is definitly an instruction or a directive
             findout(line, second);
             
@@ -341,7 +342,7 @@ public class CodeScanner {
             if(sentence.charAt(i)==' '|| sentence.charAt(i)=='\t')
                 return i;
         }
-        return -1;
+        return sentence.length();
     }
     
     /**
