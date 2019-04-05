@@ -9,62 +9,47 @@ import assembler.CodeChecker;
 import assembler.CodeFileReader;
 import assembler.CodeScanner;
 import assembler.Translator;
-import exceptions.InvalidCodeException;
-import instructions.Instruction;
-import instructions.RTypeInstruction;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.FileOutputStream;
 import java.util.LinkedList;
-import sun.net.www.URLConnection;
+import java.util.List;
+
+
 
 /**
  *
  * @author Moses
  */
 public class MiniatureAssembler {
-private static final String SAMPLE="E:\\Uni\\term4\\MemariCompMehranRezayi\\Projects\\Project1\\samples\\sample.as";
-private static LinkedList<Integer> SAMPLE_RESULT;
-    /** E:\Uni\term4\MemariCompMehranRezayi\Projects\Project1\sample.as
+
+
+    /** 
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws IOException, InvalidCodeException, InterruptedException
+    public static void main(String[] args) 
     {
-                
-        SAMPLE_RESULT=new LinkedList<>();
-        SAMPLE_RESULT.add(151060486);
-        SAMPLE_RESULT.add(152174594);
-        SAMPLE_RESULT.add(1183744);
-        SAMPLE_RESULT.add(184614913);
-        SAMPLE_RESULT.add(218103810);
-        SAMPLE_RESULT.add(234881024);
-        SAMPLE_RESULT.add(5);
-        SAMPLE_RESULT.add(-1);
-        SAMPLE_RESULT.add(2);
         
-        new CodeChecker(SAMPLE).check();
-        CodeFileReader fileReader=new CodeFileReader(SAMPLE);
-        CodeScanner codeScanner=new CodeScanner(fileReader.read());
-        Translator translator=new Translator(codeScanner.scan());
-        LinkedList<Integer> translated=translator.translate();
-        
-
-        int index=0;
-        for(Integer trans:translated)
+        if(args.length!=2)
         {
-            
-            if(trans.equals(SAMPLE_RESULT.get(index)))
-            {
-                System.out.println(trans+" Correct");
-            }else
-            {
-                System.out.println(trans+" Wrong. Expected: "+SAMPLE_RESULT.get(index));
-            }
-            index++;
+            System.out.println("Wrong imputs. call like this:\njava -jar MiniatureAssembler.jar inputFile outputFileName");
         }
         
-        
-        
+        try {
+            new CodeChecker(System.getProperty("user.dir")+"/"+args[0]).check();
+            CodeFileReader fileReader=new CodeFileReader(args[0]);
+            CodeScanner codeScanner=new CodeScanner(fileReader.read());
+            Translator translator=new Translator(codeScanner.scan());
+            LinkedList<Integer> translated=translator.translate();
+            FileOutputStream fout=new FileOutputStream(System.getProperty("user.dir")+"/"+args[1]);
+            for(Integer trans:translated)
+            {
+                fout.write(trans.toString().getBytes());
+                fout.write("\n".getBytes());
+            }
+            fout.close();
+            System.out.println("Done!");
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
     
 }

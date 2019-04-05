@@ -31,7 +31,7 @@ public class CodeChecker {
         ProcessBuilder pb=new ProcessBuilder("main.exe",fileName);
         
         Process p=pb.start();
-
+        while(p.isAlive());
         BufferedReader buffread=new BufferedReader(new InputStreamReader(p.getInputStream()));
         String output="";
         int i=0;
@@ -39,10 +39,15 @@ public class CodeChecker {
         {
             output+=(char)i;
         }
-        
+        output=output.trim();
         if(output.equalsIgnoreCase("ok"))
         {
             return true;
+        }
+        
+        if(output.isEmpty())
+        {
+            throw new InvalidCodeException("file not found.");
         }
         
         throw new InvalidCodeException(output);

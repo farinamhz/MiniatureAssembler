@@ -124,7 +124,7 @@ public class CodeScanner {
         }
         
         
-        
+        index=0;
         for(Object line:this.lines)
         {
             if(line instanceof JTypeInstruction)
@@ -152,9 +152,17 @@ public class CodeScanner {
                    {
                        throw new InvalidCodeException("Label "+label+" is not set");
                    }
-                   instruction.setOffset(address);
+                   if(instruction.getOpcode()!=11)
+                        instruction.setOffset(address);
+                   else//if its beq, the offset must be calculated
+                   {
+                       instruction.setOffset(address-index-1);
+                   }
                }
             }
+            
+            
+            index++;
         }
     }
     
@@ -277,7 +285,10 @@ public class CodeScanner {
         
         if(input.length==2)//instruction is lui or jalr so it has only 2 inputs
         {
-            setImmediate(instruction, input[1]);
+            if(data.getOpcode()==8)
+                setImmediate(instruction, input[1]);
+            else
+                instruction.setRs(Integer.parseInt(input[1]));
             return instruction;
         }
         
