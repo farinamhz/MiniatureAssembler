@@ -28,7 +28,7 @@ public class CodeChecker {
      */
     public boolean check() throws InvalidCodeException, IOException
     {
-        ProcessBuilder pb=new ProcessBuilder("main.exe",fileName);
+        ProcessBuilder pb=new ProcessBuilder("python.exe",fileName);
         
         Process p=pb.start();
         while(p.isAlive());
