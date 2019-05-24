@@ -27,7 +27,6 @@ public class MiniatureAssembler {
      */
     public static void main(String[] args) 
     {
-         args=new String[]{"sample2.as","negtest"};
         
         if(args.length!=2)
         {
