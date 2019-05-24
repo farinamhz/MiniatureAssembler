@@ -1,4 +1,4 @@
-addi 1,0,n # n 
+start addi 1,0,n # n 
 addi 2,0,1 # a = 1
 addi 3,0,1 # b = 1
 addi 4,0,2 # i = 2

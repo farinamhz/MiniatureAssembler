@@ -11,7 +11,7 @@ import assembler.CodeScanner;
 import assembler.Translator;
 import java.io.FileOutputStream;
 import java.util.LinkedList;
-import java.util.List;
+
 
 
 
@@ -27,10 +27,12 @@ public class MiniatureAssembler {
      */
     public static void main(String[] args) 
     {
+         args=new String[]{"sample2.as","negtest"};
         
         if(args.length!=2)
         {
             System.out.println("Wrong imputs. call like this:\njava -jar MiniatureAssembler.jar inputFile outputFileName");
+            return;
         }
         
         try {

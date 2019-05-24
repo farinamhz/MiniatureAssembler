@@ -31,7 +31,7 @@ public class InstructionParameters {
         this.datas.put("or", new InstructionData(InstructionType.RType, 3));
         this.datas.put("nand", new InstructionData(InstructionType.RType, 4));
         
-        //Jtypes
+        //Itypes
         this.datas.put("addi", new InstructionData(InstructionType.IType, 5));
         this.datas.put("slti", new InstructionData(InstructionType.IType, 6));
         this.datas.put("ori", new InstructionData(InstructionType.IType, 7));
@@ -41,7 +41,7 @@ public class InstructionParameters {
         this.datas.put("beq", new InstructionData(InstructionType.IType, 11));
         this.datas.put("jalr", new InstructionData(InstructionType.IType, 12));
         
-        //Itypes
+        //Jtypes
         this.datas.put("j", new InstructionData(InstructionType.JType, 13));
         this.datas.put("halt", new InstructionData(InstructionType.JType, 14));
         
